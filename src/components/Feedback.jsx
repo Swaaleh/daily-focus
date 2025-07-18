@@ -4,7 +4,7 @@ export default function Feedback({feedback}) {
     const style = {
         textAlign: 'center',
         fontSize: "14px",
-        margbtom: "10px",
+        marginBottom: "10px",
         color: feedback.type === 'success' ? "#28a745" : "#dc3545",
     };
 

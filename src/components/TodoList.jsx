@@ -7,7 +7,12 @@ export default function TodoList({
     handleRemoveTodo,
 }) {
     return(
-        <ul style={{ listStyleType: "none", padding: "0" }}>
+        <ul aria-label="Tasks list" style={{ listStyleType: "none", padding: "0" }}>
+            {todos.length === 0 && (
+                <li style={{textAlign: "center", color:  "#888", fontStyle: "italic"}}>
+                    No task to focus today, add one.
+                </li>
+            )}
             {todos.map((todo) => (
                 <TodoItem
                 key={todo.id}
@@ -17,11 +22,6 @@ export default function TodoList({
                 handleRemoveTodo={handleRemoveTodo}
                 />
             ))}
-            {todos.length === 0 && (
-                <li style={{textAlign: "center", color:  "#888", fontStyle: "italic"}}>
-                    No task to focus today, add one.
-                </li>
-            )}
         </ul>
     );
 }

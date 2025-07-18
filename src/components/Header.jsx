@@ -9,6 +9,6 @@ export default function Header({title}) {
         },
     };
     return (
-        <p style={styles.header}>{title}</p>
+        <h1 style={styles.header}>{title}</h1>
     );
 };

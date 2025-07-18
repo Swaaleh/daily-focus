@@ -18,7 +18,7 @@ export default function TodoForm({
                 marginBottom: "20px",
             }}>
             <input
-                type="text "
+                type="text"
                 placeholder={editingId ? "Edit your task" : "Add your task here..."}
                 value={editingId ? editInput : todoInput}
                 onChange={(e) => 

@@ -43,6 +43,10 @@ export default function App() {
             setFeedback({message: "Please enter a task.", type: "error"}); 
             return;
         } // Prevent empty ToDos
+        if (todos.some(todo => todo.text === todoInput.trim())) {
+            setFeedback({ message: "This task already exists.", type: "error" });
+            return;
+        }// Prevent duplicate ToDos        
         const newTodo = {id: uuidv4(), text: todoInput}; // Create new ToDo with unique ID
         setTodos([...todos, newTodo]); // Add new ToDo
         setTodoInput(""); // Clear input field
@@ -102,14 +106,14 @@ export default function App() {
     const handleCancelEdit = () => {
         setEditingId(null); // Clear the editing state
         setEditInput(""); // Clear editing input field
-        setFeedback(""); // Clear feedback message
+        setFeedback({message:"",type:""}); // Clear feedback message
     };
 
     // Function to handle toggling the completion status of a ToDo
     const handleToggleComplete = (id) => {
         setTodos(
             todos.map((todo)=>
-                todo.id === id ? {...todo, completed: !todo.completed} : todo
+                todo.id === id ? {...todo, completed: !todo.completed, completed: false} : todo
             )
         );
     }
