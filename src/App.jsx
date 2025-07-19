@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import{Routes, Route, NavLink} from "react-router-dom"
 import { v4 as uuidv4 } from "uuid";
 import Header from "./components/Header";
 import Feedback from "./components/Feedback";
@@ -55,6 +56,7 @@ export default function App() {
             setFeedback({message: "", type: ""}); // Clear feedback after 2 seconds
         }
         , 2000);
+
     };
 
     // Function to handle removing a ToDo
@@ -160,7 +162,7 @@ export default function App() {
                 handleToggleComplete={handleToggleComplete}
                 handleEditTodo={handleEditTodo}
                 handleRemoveTodo={handleRemoveTodo}
-                />
+                /> 
                 {todos.length > 0 && (
                     <button 
                         onClick={handleClearTodos} 
