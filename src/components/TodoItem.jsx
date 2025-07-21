@@ -39,7 +39,6 @@ export default function TodoItem({
                     {todo.completed ? 'Undo' : 'Complete'}
                 </button>
                 <button 
-                    title="Edit Todo"
                     onClick={() => handleEditTodo(todo.id)}
                     style={{
                         padding: "5px 10px",

@@ -4,13 +4,13 @@ export default function TodoList({
     todos,
     handleToggleComplete,
     handleEditTodo,
-    handleRemoveTodo,
+    handleRemoveTodo
 }) {
     return(
         <ul aria-label="Tasks list" style={{ listStyleType: "none", padding: "0" }}>
             {todos.length === 0 && (
                 <li style={{textAlign: "center", color:  "#888", fontStyle: "italic"}}>
-                    No task to focus today, add one.
+                    No task found, add one.
                 </li>
             )}
             {todos.map((todo) => (

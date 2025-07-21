@@ -1,13 +1,13 @@
 
-import { useState, useEffect } from "react";
-import{Routes, Route, NavLink, Link} from "react-router-dom"
-import { v4 as uuidv4 } from "uuid";
+import{BrowserRouter as Router, Routes,Route, Link} from "react-router-dom"
+import { TodosProvider } from "./context/TodosContext";
 import Header from "./components/Header";
 import Feedback from "./components/Feedback";
 import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
-import { TodosProvider } from "./context/TodosContext";
-
+import AllTodos from "./pages/AllTodos";
+import ActiveTodos from "./pages/ActiveTodos";
+import CompletedTodos from "./pages/CompletedTodos";
+import NotFound from "./pages/NotFound";
 export default function App() {
     
     const styles = {
@@ -63,6 +63,13 @@ export default function App() {
                         <Link to="/active" style={styles.navLink}>Active</Link>
                         <Link to="/completed" style={styles.navLink}>Completed</Link>
                     </nav>
+                
+                <Routes>
+                    <Route path="/" element={<AllTodos />} />
+                    <Route path="/active" element={<ActiveTodos />} />
+                    <Route path="/completed" element={<CompletedTodos />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
                 </div>
             </Router>
         </TodosProvider>

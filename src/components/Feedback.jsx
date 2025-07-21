@@ -1,4 +1,6 @@
-export default function Feedback({feedback}) {
+import { useTodos } from "../context/TodosContext";     
+export default function Feedback() {
+    const { feedback } = useTodos();
     if (!feedback.message) return null;
 
     const style = {

@@ -1,13 +1,17 @@
-export default function TodoForm({
-    todoInput,
-    setTodoInput,
-    handleAddTodo,
-    editingId,
-    editInput,
-    setEditInput,
-    handleUpdateTodo,
-    handleCancelEdit
-}) {
+import { useTodos } from "../context/TodosContext";
+
+export default function TodoForm() {
+    const {
+        todoInput,
+        editInput,
+        editingId,
+        setTodoInput,
+        setEditInput,
+        handleAddTodo,
+        handleUpdateTodo,
+        handleCancelEdit
+    } = useTodos();
+    
     return(
         <form
             onSubmit={editingId ? handleUpdateTodo : handleAddTodo}
