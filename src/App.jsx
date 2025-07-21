@@ -1,5 +1,5 @@
 
-import{BrowserRouter as Router, Routes,Route, Link} from "react-router-dom"
+import{BrowserRouter as Router, Routes,Route, NavLink} from "react-router-dom"
 import { TodosProvider } from "./context/TodosContext";
 import Header from "./components/Header";
 import Feedback from "./components/Feedback";
@@ -36,7 +36,11 @@ export default function App() {
             '&:hover': {
               backgroundColor: '#0056b3'
             }
-          },
+        },
+        activeNavLink: {
+          backgroundColor: '#0056b3',
+          border: '2px solid #004085'
+        },
           clearButton: {
             padding: "10px 20px",
             backgroundColor: "#dc3545",
@@ -47,7 +51,6 @@ export default function App() {
             display: 'block',
             margin: '20px auto 0'
           }
-        
     };
 
     return (
@@ -59,9 +62,9 @@ export default function App() {
                     <Feedback />
                     <TodoForm />
                     <nav style={styles.nav}>
-                        <Link to="/" style={styles.navLink}>All Tasks</Link>
-                        <Link to="/active" style={styles.navLink}>Active</Link>
-                        <Link to="/completed" style={styles.navLink}>Completed</Link>
+                        <NavLink to="/" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>All Tasks</NavLink>
+                        <NavLink to="/active" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>Active</NavLink>
+                        <NavLink to="/completed" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>Completed</NavLink>
                     </nav>
                 
                 <Routes>
