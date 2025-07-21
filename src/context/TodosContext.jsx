@@ -77,6 +77,12 @@ export function TodosProvider({ children }) {
     );
   };
 
+  const handleClearCompleted = () => {
+    const newTodos = todos.filter(todo => !todo.completed);
+    setTodos(newTodos);
+    setFeedback({ message: "Completed tasks cleared successfully!", type: "success" });
+    setTimeout(() => setFeedback({ message: "", type: "" }), 2000);
+  };
   const handleClearTodos = () => {
     setTodos([]);
     setFeedback({ message: "All ToDos cleared successfully!", type: "success" }); 
@@ -97,6 +103,7 @@ export function TodosProvider({ children }) {
     handleUpdateTodo,
     handleCancelEdit,
     handleToggleComplete,
+    handleClearCompleted,
     handleClearTodos
   };
 

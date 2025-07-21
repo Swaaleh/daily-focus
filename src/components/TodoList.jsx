@@ -10,7 +10,7 @@ export default function TodoList({
         <ul aria-label="Tasks list" style={{ listStyleType: "none", padding: "0" }}>
             {todos.length === 0 && (
                 <li style={{textAlign: "center", color:  "#888", fontStyle: "italic"}}>
-                    No task found, add one.
+                    No task found.
                 </li>
             )}
             {todos.map((todo) => (
