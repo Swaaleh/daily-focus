@@ -8,6 +8,7 @@ import AllTodos from "./pages/AllTodos";
 import ActiveTodos from "./pages/ActiveTodos";
 import CompletedTodos from "./pages/CompletedTodos";
 import NotFound from "./pages/NotFound";
+import AnimatedRoutes from "./components/AnimatedRoutes";
 export default function App() {
     
     const styles = {
@@ -67,12 +68,7 @@ export default function App() {
                         <NavLink to="/completed" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>Completed</NavLink>
                     </nav>
                 
-                <Routes>
-                    <Route path="/" element={<AllTodos />} />
-                    <Route path="/active" element={<ActiveTodos />} />
-                    <Route path="/completed" element={<CompletedTodos />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
+                <AnimatedRoutes />
                 </div>
             </Router>
         </TodosProvider>
