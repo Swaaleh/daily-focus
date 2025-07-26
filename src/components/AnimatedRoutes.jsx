@@ -27,7 +27,7 @@ export default function AnimatedRoutes() {
     >
       <Routes location={location}>
         <Route path="/login" element={<Login />} />
-        <Route path="/" elementd={
+        <Route path="/" element={
           <ProtectedRoute>
             <AllTodos />
           </ProtectedRoute>
