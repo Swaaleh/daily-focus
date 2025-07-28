@@ -4,6 +4,8 @@ import AllTodos from '../pages/AllTodos';
 import ActiveTodos from '../pages/ActiveTodos';
 import CompletedTodos from '../pages/CompletedTodos';
 import NotFound from '../pages/NotFound';
+import ProtectedRoute from './ProtectedRoute';
+import Login from '../pages/Login';
 
 const pageVariants = {
   initial: { opacity: 0, x: -50 },
@@ -24,9 +26,22 @@ export default function AnimatedRoutes() {
       transition={{ duration: 0.3 }}
     >
       <Routes location={location}>
-        <Route path="/" element={<AllTodos />} />
-        <Route path="/active" element={<ActiveTodos />} />
-        <Route path="/completed" element={<CompletedTodos />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={
+          <ProtectedRoute>
+            <AllTodos />
+          </ProtectedRoute>
+          } />
+        <Route path="/active" element={
+          <ProtectedRoute>
+            <ActiveTodos />
+          </ProtectedRoute>
+        } />
+        <Route path="/completed" element={
+          <ProtectedRoute>
+            <CompletedTodos />
+          </ProtectedRoute>
+        } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </motion.div>

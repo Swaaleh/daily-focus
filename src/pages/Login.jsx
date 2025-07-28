@@ -1,0 +1,62 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (login(email, password)) {
+      navigate('/');
+    } else {
+      setError('Invalid credentials');
+    }
+  };
+  
+  return (
+    <div style={{ maxWidth: '400px', margin: '0 auto' }}>
+      <h2>Login</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}> 
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+          style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+          style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
+        />
+        <button 
+          type="submit" 
+          style={{ 
+            width: '100%', 
+            padding: '10px',
+            backgroundColor: '#007BFF',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Login
+        </button>
+        <p style={{textAlign: "center", color:  "#888", fontStyle: "italic"}}>
+                   Email: test@example.com, Password: 123
+                </p>
+      </form>
+    </div>
+  );
+}

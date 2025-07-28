@@ -4,12 +4,12 @@ import { TodosProvider } from "./context/TodosContext";
 import Header from "./components/Header";
 import Feedback from "./components/Feedback";
 import TodoForm from "./components/TodoForm";
-import AllTodos from "./pages/AllTodos";
-import ActiveTodos from "./pages/ActiveTodos";
-import CompletedTodos from "./pages/CompletedTodos";
-import NotFound from "./pages/NotFound";
 import AnimatedRoutes from "./components/AnimatedRoutes";
+import { useAuth } from "./context/AuthContext";    
+import { useTodos } from "./context/TodosContext";  
+
 export default function App() {
+    const { user } = useAuth();
     
     const styles = {
         container: {
@@ -59,15 +59,17 @@ export default function App() {
             <Router>
                 <div style={styles.container}>
                     <Header title={"Daily Focus"} />
-
-                    <Feedback />
-                    <TodoForm />
-                    <nav style={styles.nav}>
-                        <NavLink to="/" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>All Tasks</NavLink>
-                        <NavLink to="/active" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>Active</NavLink>
-                        <NavLink to="/completed" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>Completed</NavLink>
-                    </nav>
-                
+                    {user &&(
+                        <>
+                        <Feedback />
+                        <TodoForm />
+                            <nav style={styles.nav}>
+                                <NavLink to="/" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>All Tasks</NavLink>
+                                <NavLink to="/active" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>Active</NavLink>
+                                <NavLink to="/completed" style={({isActive})=> isActive ? {...styles.navLink, ...styles.activeNavLink} : styles.navLink}>Completed</NavLink>
+                            </nav>
+                        </>
+                    )}
                 <AnimatedRoutes />
                 </div>
             </Router>
