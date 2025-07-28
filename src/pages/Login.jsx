@@ -39,10 +39,23 @@ export default function Login() {
           required
           style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
         />
-        <button type="submit" style={{ width: '100%', padding: '10px' }}>
+        <button 
+          type="submit" 
+          style={{ 
+            width: '100%', 
+            padding: '10px',
+            backgroundColor: '#007BFF',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
           Login
         </button>
-        
+        <p style={{textAlign: "center", color:  "#888", fontStyle: "italic"}}>
+                   Email: test@example.com, Password: 123
+                </p>
       </form>
     </div>
   );

@@ -7,7 +7,7 @@ export function AuthProvider({ children }) {
   
   const login = (email, password) => {
     // In a real app, you'd make an API call here
-    if (email === 'test@example.com' && password === 'password') {
+    if (email === 'test@example.com' && password === '123') {
       setUser({ email, name: 'Test User' });
       return true;
     }
