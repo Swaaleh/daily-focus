@@ -42,6 +42,7 @@ export default function Login() {
         <button type="submit" style={{ width: '100%', padding: '10px' }}>
           Login
         </button>
+        
       </form>
     </div>
   );
