@@ -8,7 +8,7 @@ export default function AllTodos() {
         <TodoList
             todos={todos}
             handleToggleComplete={handleToggleComplete}
-            handleEditiTodo={handleEditTodo}
+            handleEditTodo={handleEditTodo}
             handleRemoveTodo={handleRemoveTodo}
         />
     );
