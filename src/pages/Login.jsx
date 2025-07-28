@@ -22,7 +22,7 @@ export default function Login() {
     <div style={{ maxWidth: '400px', margin: '0 auto' }}>
       <h2>Login</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}> 
         <input
           type="email"
           value={email}
